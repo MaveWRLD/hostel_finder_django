@@ -23,8 +23,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('hostels.urls')),
     path('login/', authView.LoginView.as_view(), name='login'),
     path('register/', include('account.urls')),
-   
+    path('wishlist/',include('wishlist.urls', namespace='wishlist')),
+    path('', include('hostels.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

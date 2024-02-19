@@ -20,7 +20,7 @@
 	<h2 class="title">{{ hostels.hostel_name}}</h2>
 	
 	<div class="mb-3"> 
-		<var class="price h4">{{ hostel.hostel_price}}</var> 
+		<var class="price h4">{{ hostels.hostel_price}}</var> 
 </div> 
 
 <p>{{ hostels.hostel_description}}</p>
@@ -50,7 +50,7 @@
 	{% if hostel.stock <= 0 %}
 		<h5> Rooms not Available </h5>
 	{% endif %}
-	<a href="{{ hostel.get_absolute_url }}" class="btn  btn-primary"> <span class="text">Add to favoraties</span> <i class="fas fa-shopping-cart"></i>  </a>
+	<a href="{% url "add_wishlist" hostels.id %}" class="btn  btn-primary"> <span class="text">Add to wishlist</span> <i class="fas fa-shopping-cart"></i>  </a>
 </article> <!-- product-info-aside .// -->
 		</main> <!-- col.// -->
 	</div> <!-- row.// -->

@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     #apps
     'hostels.apps.HostelsConfig',
     'account.apps.AccountConfig',
-    'category.apps.CategoryConfig'
+    'category.apps.CategoryConfig',
+    'wishlist.apps.WishlistConfig',
 ]
 
 MIDDLEWARE = [
