@@ -15,11 +15,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarTop4">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link"> English </a>
-          </li>
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link"> USD </a>
+          <li class="nav-item">
+            <a href="{% url 'wishlist:wishlist' %}" class="nav-link">
+              <i class="fas fa-shopping-cart"></i> Wishlist
+            </a>
           </li>
         </ul>
         <ul class="navbar-nav">
@@ -46,7 +45,7 @@
       <div class="row align-items-center">
         <div class="col-lg-2 col-md-3 col-6">
           <a href="./" class="brand-wrap">
-            <img class="logo" src="{% static "store/images/logo.png" %}">
+            <img class="logo" src="{% static "hostels/images/logo.png" %}">
           </a>
           <!-- brand-wrap.// -->
         </div>
@@ -66,14 +65,9 @@
         <!-- col.// -->
         <a href="{% url "hostels:hostels" %}" class="btn btn-outline-primary">Hostels</a>
         <div class="col-lg col-md-6 col-sm-12 col">
-          <form action="#" class="search">
+          <form action="{% url "hostels:search" %}" class="search">
             <div class="input-group w-100">
-              <input
-                type="text"
-                class="form-control"
-                style="width: 60%"
-                placeholder="Search"
-              />
+              <inputtype="text" class="form-control" style="width: 60%" placeholder="Search"/>
 
               <div class="input-group-append">
                 <button class="btn btn-primary" type="submit">

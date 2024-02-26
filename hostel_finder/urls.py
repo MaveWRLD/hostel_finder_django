@@ -27,4 +27,5 @@ urlpatterns = [
     path('register/', include('account.urls')),
     path('wishlist/',include('wishlist.urls', namespace='wishlist')),
     path('', include('hostels.urls')),
+    path('listings/', include('listings.urls', namespace='listings')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

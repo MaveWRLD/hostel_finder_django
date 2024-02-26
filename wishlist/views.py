@@ -23,6 +23,7 @@ def add_wishlist(request, hostel_id):
 
     return redirect('wishlist:wishlist')
 
+
 def remove_wishist_item(request, hostel_id):
     wishlist = Wishlist.objects.get(wishlist_id=_wishlist_id(request))
     hostel = get_object_or_404(Hostel, id=hostel_id)

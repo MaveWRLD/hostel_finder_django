@@ -156,7 +156,7 @@
                   </div>
                   <!-- price-wrap.// -->
                 </div>
-                <a href="{% url "wishlist:add_wishlist" hostel.id %}" class="btn btn-block btn-primary">Add to Wishlist </a>
+                <a href="{% url "wishlist:add_wishlist" hostel.id %}" class="btn btn-block btn-primary">Add to Wishlist<i class="fas fa-shopping-cart"></i></a>
               </figcaption>
             </figure>
           </div>
@@ -167,17 +167,28 @@
 
         <nav class="mt-4" aria-label="Page navigation sample">
           <ul class="pagination">
-            <li class="page-item disabled">
-              <a class="page-link" href="#">Previous</a>
-            </li>
-            <li class="page-item active">
-              <a class="page-link" href="#">1</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              <li class="page-item {% if not hostels.has_previous %} disabled {% endif %}">
+                  {% if hostels.has_previous %}
+                      <a class="page-link" href="?page={{ hostels.previous_page_number }}">Previous</a>
+                  {% else %}
+                      <span class="page-link">Previous</span>
+                  {% endif %}
+              </li>
+              {% for page_number in hostels.paginator.page_range %}
+                  <li class="page-item {% if page_number == hostels.number %} active {% endif %}">
+                      <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                  </li>
+              {% endfor %}
+              <li class="page-item {% if not hostels.has_next %} disabled {% endif %}">
+                  {% if hostels.has_next %}
+                      <a class="page-link" href="?page={{ hostels.next_page_number }}">Next</a>
+                  {% else %}
+                      <span class="page-link">Next</span>
+                  {% endif %}
+              </li>
           </ul>
-        </nav>
+      </nav>
+      
       </main>
       <!-- col.// -->
     </div>

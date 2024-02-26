@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from category.models import Location
 from .models import Hostel
 
@@ -22,9 +23,28 @@ def hostel_details(request, year, month, day, hostel):
 
 
 def hostel(request, location=None):
-    hostels = Hostel.hostelAvailable.all()
+    hostels_list = Hostel.hostelAvailable.all()
+
     if location:
         location_obj = get_object_or_404(Location, slug=location)
-        hostels = hostels.filter(hostel_location=location_obj)
+        hostel_p = hostels_list.filter(hostel_location=location_obj)
+    else:
+        hostel_p = hostels_list
+
+    paginator = Paginator(hostel_p, 3)
+    page_number = request.GET.get('page')
+
+    try:
+        hostels = paginator.page(page_number)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        hostels = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        hostels = paginator.page(paginator.num_pages)
+
     return render(request, 'hostels/hostels.html', {'hostels': hostels})
+
+def search(request):
+    return render(request, 'hostels/hostels.html')
 # Create your views here.

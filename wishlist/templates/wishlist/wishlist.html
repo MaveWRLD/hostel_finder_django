@@ -4,7 +4,12 @@
 	<div class="container">
 		
 <!-- ============================ COMPONENT 1 ================================= -->
-
+{% if not wishlist_items %}
+ <h2 class="text-center">You don't have a hostel in your wishlist</h2>
+ <br>
+ <div class="text-center">
+	<a href="{% url 'hostels:hostels' %}" class="btn btn-primary">Continue Shopping</a>
+{% else %}
 <div class="row">
 	<aside class="col-lg-9">
 		<div class="card">
@@ -17,26 +22,30 @@
 </tr>
 </thead>
 <tbody>
-	{% for wishlist_item in wishlist_items  %}
-	<tr>
-		<td>
-			<figure class="itemside align-items-center">
-			<div class="aside"  width="200px" height="150px"><a href="{{ wishlist_item.hostels.get_absolute_url }}"><img src="{{ wishlist_item.hostels.hostel_image.url }}"  width="200px" height="150px"></a></div>
-			<figcaption class="info">
-				<a href="{{ wishlist_item.hostels.get_absolute_url }}" class="title text-dark">{{ wishlist_item.hostels.hostel_name}}</a>
-				<p class="text-muted small">Matrix: 25 Mpx <br> Brand: Canon</p>
-			</figcaption>
-		</figure>
+{% for wishlist_item in wishlist_items  %}
+<tr>
+	<td>
+		<figure class="itemside align-items-center">
+				<div class="aside">
+					<a href="{{ wishlist_item.hostels.get_absolute_url }}">
+						<img src="{{ wishlist_item.hostels.hostel_image.url }}" width="200px" height="150px" alt="{{ wishlist_item.hostels.hostel_name }}">
+					</a>
+				</div>
+				<figcaption class="info">
+					<a href="{{ wishlist_item.hostels.get_absolute_url }}" class="title text-dark">{{ wishlist_item.hostels.hostel_name }}</a>
+					<p class="text-muted small">Matrix: 25 Mpx <br> Brand: Canon</p>
+				</figcaption>
+			</figure>
+		</td>
+		<td> 
+			<div class="price-wrap"> 
+				<var class="price">&cent;{{ wishlist_item.hostels.hostel_price }}</var> 
+			</div> <!-- price-wrap .// -->
+		</td>
+		<td class="text-right"> 
+			<a href="{% url 'wishlist:remove_wishlist_item' wishlist_item.hostels.id %}" class="btn btn-danger">Remove</a>
 	</td>
-	<td> 
-		<div class="price-wrap"> 
-			<var class="price">&cent;{{ wishlist_item.hostels.hostel_price}}</var> 
-		</div> <!-- price-wrap .// -->
-	</td>
-	<td class="text-right"> 
-		<a href="{% url "wishlist:remove_wishlist_item" wishlist_item.hostels.id%}" class="btn btn-danger"> Remove</a>
-	</td>
-</tr>
+</tr>	
 {% endfor %}
 </tbody>
 </table>
@@ -63,14 +72,14 @@
 			<p class="text-center mb-3">
 				<img src="./images/misc/payments.png" height="26">
 			</p>
-			<a href="./place-order.html" class="btn btn-primary btn-block"> Checkout </a>
-			<a href="./store.html" class="btn btn-light btn-block">Continue Shopping</a>
+			<a href="{% url 'hostels:hostels' %}" class="btn btn-light btn-block">Continue Shopping</a>
 		</div> <!-- card-body.// -->
 		</div> <!-- card.// -->
 </aside> <!-- col.// -->
 
 	
 </div> <!-- row.// -->
+{% endif %}
 <!-- ============================ COMPONENT 1 END .// ================================= -->
 
 </div> <!-- container .//  -->

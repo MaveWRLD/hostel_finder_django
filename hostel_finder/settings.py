@@ -40,10 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #apps
+    'crispy_forms',
+    'crispy_bootstrap5',
     'hostels.apps.HostelsConfig',
     'account.apps.AccountConfig',
     'category.apps.CategoryConfig',
     'wishlist.apps.WishlistConfig',
+    'listings.apps.ListingsConfig',
+    'payments.apps.PaymentsConfig',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +142,9 @@ LOGOUT_URL = 'account:logout'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51OnWK6DQ5lWsbdxOnb86LrmCkprlT1U1YvkTxeuzKjOt1LLWN8uX3AS0HTMki0wv43OyV1HRh4jREloBsrlViK6Y00Z6opAv1f'
+STRIPE_SECRET_KEY = 'sk_test_51OnWK6DQ5lWsbdxOBLVwmtYANWBthWMwL5Ad1fmwn2PPn59AP0dCkxt1xynTPwAdlSlH94EpX1dy8UgOKooHmcX1005UE5T6EJ' 
+STRIPE_API_VERSION = '2023-10-16'
