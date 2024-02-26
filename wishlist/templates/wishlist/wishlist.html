@@ -44,7 +44,9 @@
 		</td>
 		<td class="text-right"> 
 			<a href="{% url 'wishlist:remove_wishlist_item' wishlist_item.hostels.id %}" class="btn btn-danger">Remove</a>
-	</td>
+		
+			<a href="{% url 'listings:place_booking' wishlist_item.hostels.id %}" class="btn  btn-primary"><span class="text">Book</span></a>
+		</td>
 </tr>	
 {% endfor %}
 </tbody>
@@ -56,23 +58,7 @@
 
 		<div class="card">
 			<div class="card-body">
-			<dl class="dlist-align">
-			  <dt>Total price:</dt>
-			  <dd class="text-right">$69.97</dd>
-			</dl>
-			<dl class="dlist-align">
-				<dt>Tax:</dt>
-				<dd class="text-right"> $10.00</dd>
-			</dl>
-			<dl class="dlist-align">
-				<dt>Total:</dt>
-				<dd class="text-right text-dark b"><strong>$59.97</strong></dd>
-			</dl>
-			<hr>
-			<p class="text-center mb-3">
-				<img src="./images/misc/payments.png" height="26">
-			</p>
-			<a href="{% url 'hostels:hostels' %}" class="btn btn-light btn-block">Continue Shopping</a>
+			<a href="{% url 'hostels:hostels' %}" class="btn  btn-primary btn-block">Continue Shopping</a>
 		</div> <!-- card-body.// -->
 		</div> <!-- card.// -->
 </aside> <!-- col.// -->
