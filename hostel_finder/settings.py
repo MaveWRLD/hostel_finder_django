@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'category.apps.CategoryConfig',
     'wishlist.apps.WishlistConfig',
     'listings.apps.ListingsConfig',
-    'payments.apps.PaymentsConfig',
 ]
 
 MIDDLEWARE = [
@@ -136,7 +135,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'hoatels:home_page'
+LOGIN_REDIRECT_URL = 'hostels:home_page'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'account:logout'
 
@@ -148,3 +147,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 STRIPE_PUBLISHABLE_KEY = 'pk_test_51OnWK6DQ5lWsbdxOnb86LrmCkprlT1U1YvkTxeuzKjOt1LLWN8uX3AS0HTMki0wv43OyV1HRh4jREloBsrlViK6Y00Z6opAv1f'
 STRIPE_SECRET_KEY = 'sk_test_51OnWK6DQ5lWsbdxOBLVwmtYANWBthWMwL5Ad1fmwn2PPn59AP0dCkxt1xynTPwAdlSlH94EpX1dy8UgOKooHmcX1005UE5T6EJ' 
 STRIPE_API_VERSION = '2023-10-16'
+
+PAYSTACK_PUBLIC_KEY = 'pk_test_134a205e14583af2a512274c8c2ce3f79528dbdb'
+PAYSTACK_SECRET_KEY = 'sk_test_672910c9a04916c766debab3279170219cb06b2a'

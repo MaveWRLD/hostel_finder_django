@@ -9,20 +9,10 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'account:dashbord')
-
+            return redirect('login')
     else:
         form = UserRegisterForm()
-    return render(request, 'hostels/register.html', {'form': form})
-
-
-def index(request):
-    return render(request, 'hostels/index.html')
-
-
-@login_required
-def dashboard(request):
-    return render(request, 'hostels/dashboard.html', {'section': 'dashboard'})
+    return render(request, 'registration/register.html', {'form': form})
 
 
 def logout_user(request):

@@ -8,7 +8,6 @@
 		<a href="{% url 'hostels:hostels' %}" class="btn btn-success">Explore</a>
 	</div>
 </div>
-
 <div class="container" style="margin: 0 auto;width: 50%;padding: 50px;background: #f1f1f1;margin-top: 50px;margin-bottom: 50px;">
     <div class="row invoice row-printable">
         <div class="col-md-12">
@@ -28,10 +27,8 @@
                             <div class="invoice-from">
                                 <ul class="list-unstyled text-right">
                                     <li><strong>Invoiced To</strong></li>
-                                    <li>Jakob Smith</li>
-                                    <li>Roupark 37</li>
-                                    <li>New York, NY, 2014</li>
-                                    <li>USA</li>
+                                    <li>{{listing.first_name}} {{listing.last_name}} </li>
+                                    <li>{{listing.address}}</li>
                                 </ul>
                             </div>
                         </div>
@@ -41,9 +38,9 @@
                             <div class="invoice-details mt25">
                                 <div class="well">
                                     <ul class="list-unstyled mb0">
-                                        <li><strong>Order</strong> {{ listing.booking_number}}</li>
+                                        <li><strong>Order</strong> {{ listing.id}}</li>
                                         <li><strong>Transaction</strong> #</li>
-                                        <li><strong>Order Date:</strong> {{listing.created}}</li>
+                                        <li><strong>Order Date:</strong> {{listing.timestamp}}</li>
                                         <li><strong>Status:</strong> PAID</li>
                                     </ul>
                                 </div>
@@ -55,13 +52,13 @@
                                         <thead>
                                             <tr>
                                                 <th class="per70 text-center">Hostel Name</th>
-                                                <th class="per25 text-center">Hostel Price</th>
+                                                <th class="per25 text-center">Amount</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>{{hostel.hostel_name}}</td>
-                                                <td class="text-center">${{hostel.hostel_price}}</td>
+                                                <td>{{ listing.hostel_name }}</td>
+                                                <td class="text-center">&cent;{{ listing.hostel_price }}</td>
                                             </tr>
                                         </tbody>                                         
                                     </table>

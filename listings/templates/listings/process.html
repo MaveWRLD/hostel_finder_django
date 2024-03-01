@@ -1,0 +1,47 @@
+{% extends "hostels/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+	
+<!-- ============================ COMPONENT REGISTER   ================================= -->
+<div class="card mx-auto" style="max-width:520px; margin-top:10px;">
+      <article class="card-body">
+		<ul>
+			<li>{{listing.email}}</li>
+			<li>{{pk}}</li>
+			<li>{{listing.ref}}</li>
+			<li></li>
+			<li></li>
+		</ul>
+            <script src="https://js.paystack.co/v1/inline.js"></script>
+				<button class="btn btn-primary btn-block" onclick= "payWithPayStack()" id="paystack-button">Pay</button>
+		</article>
+   </div>
+   <script>
+    function payWithPayStack() {
+        let currency = 'GHS';
+        let plan = '';
+        let ref = '{{ listing.ref }}';
+        let obj = {
+            key: '{{ pk }}',
+            email: '{{ listing.email }}',
+            amount: '{{ listing.hostel_price_value }}',
+            ref: ref,
+            callback: function(response) {
+                window.location.href = '{% url "listing:verify-payment" listing.ref %}';
+            },
+        };
+        if (Boolean(currency)) {
+            obj.currency = currency.toUpperCase();
+        }
+        if (Boolean(plan)) {
+            obj.plan = plan;
+        }
+        var handler = PaystackPop.setup(obj);
+        handler.openIframe();
+    }
+    </script>
+<br><br>
+</section>
+{% endblock content %}
