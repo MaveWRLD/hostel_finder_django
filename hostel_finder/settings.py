@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'account.apps.AccountConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'hostels.apps.HostelsConfig',
-    'account.apps.AccountConfig',
+    
     'category.apps.CategoryConfig',
     'wishlist.apps.WishlistConfig',
     'listings.apps.ListingsConfig',
@@ -136,7 +137,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'hostels:home_page'
-LOGIN_URL = 'login'
+LOGIN_URL = 'account:login'
 LOGOUT_URL = 'account:logout'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -150,3 +151,5 @@ STRIPE_API_VERSION = '2023-10-16'
 
 PAYSTACK_PUBLIC_KEY = 'pk_test_134a205e14583af2a512274c8c2ce3f79528dbdb'
 PAYSTACK_SECRET_KEY = 'sk_test_672910c9a04916c766debab3279170219cb06b2a'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -9,13 +9,17 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('account:login')
     else:
         form = UserRegisterForm()
     return render(request, 'registration/register.html', {'form': form})
 
 
+@login_required
+def dashboard(request):
+    return render(request, 'registration/dashboard.html')
+
 def logout_user(request):
     logout(request)
-    return redirect('login')
+    return redirect('account:login')
 # Create your views here.

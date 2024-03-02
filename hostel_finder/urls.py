@@ -23,9 +23,19 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', authView.LoginView.as_view(), name='login'),
-    path('register/', include('account.urls')),
-    path('wishlist/',include('wishlist.urls', namespace='wishlist')),
+    path('account/', include('account.urls')),
+    path('wishlist/', include('wishlist.urls', namespace='wishlist')),
     path('', include('hostels.urls')),
     path('listings/', include('listings.urls', namespace='listings')),
+    path('password-change/', authView.PasswordChangeView.as_view(),name='password_change'),
+    path('password-change/done/', authView.PasswordChangeDoneView.as_view(), name='password_change_done'),
+    path('password-reset/', authView.PasswordResetView.as_view(),
+         name='password_reset'),
+    path('password-reset/done/', authView.PasswordResetDoneView.as_view(),
+        name='password_reset_done'),
+    path('password-reset/<uidb64>/<token>/',
+        authView.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('password-reset/complete/', authView.PasswordResetCompleteView.as_view(),
+         name='password_reset_complete'),
+    # reset password urls
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
