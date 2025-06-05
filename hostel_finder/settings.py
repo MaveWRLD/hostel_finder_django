@@ -41,11 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #apps
+    # apps
     'crispy_forms',
     'crispy_bootstrap5',
     'hostels.apps.HostelsConfig',
-    
+
     'category.apps.CategoryConfig',
     'wishlist.apps.WishlistConfig',
     'listings.apps.ListingsConfig',
@@ -59,7 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
 ]
 
 ROOT_URLCONF = 'hostel_finder.urls'
@@ -75,7 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                #context_processor
+                # context_processor
                 'category.context_processor.menu_links',
             ],
         },
@@ -146,11 +146,7 @@ MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-STRIPE_PUBLISHABLE_KEY = 'pk_test_51OnWK6DQ5lWsbdxOnb86LrmCkprlT1U1YvkTxeuzKjOt1LLWN8uX3AS0HTMki0wv43OyV1HRh4jREloBsrlViK6Y00Z6opAv1f'
-STRIPE_SECRET_KEY = 'sk_test_51OnWK6DQ5lWsbdxOBLVwmtYANWBthWMwL5Ad1fmwn2PPn59AP0dCkxt1xynTPwAdlSlH94EpX1dy8UgOKooHmcX1005UE5T6EJ' 
-STRIPE_API_VERSION = '2023-10-16'
-
-PAYSTACK_PUBLIC_KEY = 'pk_test_134a205e14583af2a512274c8c2ce3f79528dbdb'
-PAYSTACK_SECRET_KEY = 'sk_test_672910c9a04916c766debab3279170219cb06b2a'
+PAYSTACK_PUBLIC_KEY = config('PAYSTACK_PUBLIC_KEY')
+PAYSTACK_SECRET_KEY = config('PAYSTACK_SECRET_KEY')
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
